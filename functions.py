@@ -1,8 +1,9 @@
-def title():
-    return " Bienvenido a mi Juego "
-
-
 # --- COLORS AND STYLES --- #
+
+
+def red(text):
+    return '\033[31m'+text+'\033[39m'
+
 
 def text_color(color, text):
     color_list = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"]
@@ -54,3 +55,28 @@ def text_style(style, text):
         return text
     else:
         return eval(style)+text+end
+
+# -- TEXTS -- #
+
+
+def title():
+    with open("texts.txt") as text:
+        return text.read()
+
+
+def text(begin, end):
+    lines = ""
+    with open("texts.txt") as text:
+        lines_list = text.readlines()
+        for line in range(begin-1, end):
+            lines = lines+str(lines_list[line])
+        return lines
+
+
+def text_delay(begin, end, delay):
+    lines = ""
+    with open("texts.txt") as text:
+        lines_list = text.readlines()
+        for line in range(begin-1, end):
+            lines = lines+"print('"+str(lines_list[line])+"')"+"\ntime.sleep(2)\n"
+        return lines
