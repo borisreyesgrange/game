@@ -1,18 +1,35 @@
-import time
+from classes import *
+from styles import *
 from functions import *
-graphics_color = random.choice(["red", "green", "yellow", "blue", "cyan"])
-game_color = "magenta"
+import time
 
-print(title(graphics_color))
-input(text_color(game_color, "Press enter when you are ready"))
-select_character(game_color)
+chosen_name = False
+chosen_class = ""
+color = ""
+hero = None
 
-#print_title()
+while not chosen_name:
 
-#print(red("Mi texto"))
+    # SHOWING TITLE
+    print(title("cyan"))
 
-#print(text_color("cyan", "Texto a colorear"))
+    # CHOSEN A CLASS
+    class_config = select_class()
+    chosen_class = class_config[0]
+    color = class_config[1]
 
-#print(text_color("red", title()))
+    # DEFINE THE NAME
+    chosen_name = hero_name(chosen_class, color)
 
-#print(text_delay(8, 12, 4))
+# HERO CREATION
+hero_class = configure_hero(chosen_class)
+
+if hero_class == "Mage":
+    hero = Mage(chosen_name)
+elif hero_class == "Warrior":
+    hero = Warrior(chosen_name)
+elif hero_class == "Hunter":
+    hero = Hunter(chosen_name)
+
+print("\nWelcome", text_color(color, hero.name), "the", text_color(color, hero.className))
+
