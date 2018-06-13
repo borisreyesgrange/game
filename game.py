@@ -13,23 +13,23 @@ while not chosen_name:
     # SHOWING TITLE
     print(title("cyan"))
 
-    # CHOSEN A CLASS
-    class_config = select_class()
-    chosen_class = class_config[0]
-    color = class_config[1]
+    # CHOOSE A CLASS
+    chosen_class = select_class()
+
+    # ASSIGN COLOR DEPENDING OF THE CLASS
+    color = assign_color(chosen_class)
 
     # DEFINE THE NAME
     chosen_name = hero_name(chosen_class, color)
 
 # HERO CREATION
-hero_class = configure_hero(chosen_class)
 
-if hero_class == "Mage":
+if chosen_class == "Binary Mage":
     hero = Mage(chosen_name)
-elif hero_class == "Warrior":
+elif chosen_class == "Encrypted Warrior":
     hero = Warrior(chosen_name)
-elif hero_class == "Hunter":
+elif chosen_class == "Algorithm Hunter":
     hero = Hunter(chosen_name)
 
-print("\nWelcome", text_color(color, hero.name), "the", text_color(color, hero.className))
+print("\nWelcome", tc(color, hero.name), "the", tc(color, hero.className))
 
