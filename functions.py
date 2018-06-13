@@ -18,25 +18,41 @@ def text(begin, end):
 
 
 def title(color):
-    return text_color(color, text(1, 8))
+    return tc(color, text(1, 8))
 
 
 # -- SELECT CLASS -- #
 
 def select_class():
-    class_list = ["Binary Mage", "Encryption Warrior", "Algorithm Hunter"]
+    class_list = ["Binary Mage", "Encrypted Warrior", "Algorithm Hunter"]
     color_list = ["blue", "yellow", "magenta"]
 
     chosen_class = ""
     while chosen_class not in ("1", "2", "3"):
         print("Choose the class of your hero:\n")
-        print(text_color(color_list[0], "1) "+class_list[0]), text_color(color_list[1], "\n2) "+class_list[1]),
-              text_color(color_list[2], "\n3) "+class_list[2]))
+        print(tc(color_list[0], "1) "+class_list[0]), tc(color_list[1], "\n2) "+class_list[1]),
+              tc(color_list[2], "\n3) "+class_list[2]))
         chosen_class = input("\nEnter your option number: ")
         if chosen_class not in ("1", "2", "3"):
             print("Invalid option, you must enter the number... try again\n")
             time.sleep(1)
-    return [class_list[int(chosen_class)-1], color_list[int(chosen_class)-1]]
+    return class_list[int(chosen_class)-1]
+
+
+# -- ASSIGN COLOR TO A HERO -- #
+
+
+def assign_color(chosen_class):
+    color_list = ["blue", "yellow", "magenta"]
+
+    if chosen_class == "Binary Mage":
+        return color_list[0]
+
+    if chosen_class == "Encrypted Warrior":
+        return color_list[1]
+
+    if chosen_class == "Algorithm Hunter":
+        return color_list[2]
 
 
 # -- NAME THE  HERO --#
@@ -48,19 +64,12 @@ def hero_name(chosen_class, color):
     chosen_name = input("Write the name of your character: ")
 
     while creation_confirm != "yes":
-        print("\nYou choose the class", text_color(color, chosen_class), "for your new hero named", text_color(color, chosen_name))
-        creation_confirm = input("Type"+text_color(color, "'yes'")+"if you are sure about this to begin ")
+        print("\nYou choose the class", tc(color, chosen_class), "for your new hero named", tc(color, chosen_name))
+        creation_confirm = input("Type"+tc(color, "'yes'")+"if you are sure about this to begin ")
         if creation_confirm != "yes":
-            print("\nInvalid option, you must write", text_color(color, "yes"), "... lets start again\n")
+            print("\nInvalid option, you must write", tc(color, "yes"), "... lets start again\n")
             time.sleep(1)
             return False
     return chosen_name
-
-# -- CREATING THE HERO -- #
-
-
-def configure_hero(chosen_class):
-    hero_class = chosen_class.rsplit(" ", 1)[1]
-    return hero_class
 
 
