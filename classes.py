@@ -18,12 +18,12 @@ class Mage(Char):
 
     def __init__(self, name):
         Char.__init__(self, name, self.base_health, self.base_damage, self.base_defense, self.base_energy)
-        self.color = "yellow"
+        self.color = "blue"
 
 
 class Warrior(Char):
 
-    className = "Encryption Warrior"
+    className = "Encrypted Warrior"
     base_health = 120
     base_damage = 15
     base_defense = 70
@@ -31,7 +31,7 @@ class Warrior(Char):
 
     def __init__(self, name):
         Char.__init__(self, name, self.base_health, self.base_damage, self.base_defense, self.base_energy)
-        self.color = "blue"
+        self.color = "yellow"
 
 
 class Hunter(Char):
