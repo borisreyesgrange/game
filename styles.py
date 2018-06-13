@@ -1,7 +1,7 @@
 # --- COLORS AND STYLES --- #
 
 
-def text_color(color, text):
+def tc(color, text):
     color_list = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"]
     end = '\033[39m'
 
@@ -20,7 +20,7 @@ def text_color(color, text):
         return eval(color)+text+end
 
 
-def line_color(color, text):
+def lc(color, text):
     color_list = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"]
     end = '\033[49m'
 
@@ -39,7 +39,7 @@ def line_color(color, text):
         return eval(color)+text+end
 
 
-def text_style(style, text):
+def ts(style, text):
     style_list = ["bright", "dim", "normal"]
     end = '\033[0m'
 
@@ -51,12 +51,3 @@ def text_style(style, text):
         return text
     else:
         return eval(style)+text+end
-
-
-"""def text_delay(begin, end, delay):
-    lines = ""
-    with open("texts.txt") as text:
-        lines_list = text.readlines()
-        for line in range(begin-1, end):
-            lines = lines+"print('"+str(lines_list[line])+"')time.sleep(2)"
-        return lines"""
